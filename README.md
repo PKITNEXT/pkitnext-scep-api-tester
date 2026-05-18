@@ -41,7 +41,6 @@ Step 4/4  CertRep     ─── receives and decodes the CA response
 - **Mitel Phone Mode** — CSR attributes in BER order (non-canonical), required by some PBX systems
 - **CA certificate chain viewer** — inspect Subject, Issuer, Serial, validity and download as PEM
 - **Certificate output** — view and save the issued certificate as PEM
-- Professional blue title bar with About dialog and full EULA
 
 ---
 
