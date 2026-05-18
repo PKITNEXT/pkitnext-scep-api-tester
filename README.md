@@ -34,9 +34,7 @@ GetCACaps → GetCACert → PKCSReq → CertRep
 
 ## About PKITNEXT LABS
 
-PKITNEXT LABS develops PKI and certificate lifecycle management solutions —
-automated certificate enrollment via SCEP and ACME for enterprise environments,
-embedded devices, and cloud-native infrastructure.
+PKITNEXT LABS develops PKI and certificate lifecycle management solutions and automated certificate enrollment.
 
 🌐 [pkitnext.de](https://www.pkitnext.de)
 
