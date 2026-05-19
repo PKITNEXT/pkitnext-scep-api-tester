@@ -1,6 +1,6 @@
 # PKITNEXT LABS – SCEP Tools for Windows & macOS
 
-> Free tools for SCEP certificate enrollment and automated certificate lifecycle management
+> Modern SCEP enrollment testing and certificate lifecycle automation toolkit for enterprise environments.
 
 [![Latest Release](https://img.shields.io/github/v/release/PKITNEXT/pkitnext-scep-api-tester?label=latest%20release&color=0052a0)](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-blue)](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
