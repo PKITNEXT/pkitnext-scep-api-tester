@@ -246,6 +246,22 @@ Load config.yaml
 
 ---
 
+## Security Design
+
+Security software requires trust. Here is what these tools do — and what they deliberately do not do:
+
+| Property | Detail |
+|---|---|
+| **No telemetry** | No data is sent anywhere except to your configured SCEP server |
+| **No cloud dependency** | Fully offline-capable — no license server, no update check, no analytics |
+| **Local key generation** | RSA key pairs are generated on the machine, never transmitted |
+| **Private key never leaves the machine** | Only the CSR (public key + subject) is sent to the CA |
+| **TLS validation** | TLS certificate verification is enabled by default; bypass is opt-in (lab/dev only) |
+| **RFC 8894 compliant** | Standard SCEP protocol — no proprietary extensions required |
+| **Memory-safe implementation** | Written in Rust — no buffer overflows, no use-after-free, no null pointer dereferences |
+
+---
+
 ## CA Compatibility
 
 | CA | Notes |
