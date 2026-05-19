@@ -54,7 +54,7 @@ Both tools are built in a library that implements RFC 8894.
 └─────────────────────────┼───────────────────────────────────┘
                           │  HTTPS  (RFC 8894)
           ┌───────────────▼──────────────────┐
-          │     SCEP Certificate Authority    │
+          │     SCEP Certificate Authority   │
           │                                  │
           │  PKITNEXT  │  MS NDES  │  EJBCA  │
           │  OpenXPKI  │  any RFC 8894 CA    │
@@ -74,7 +74,7 @@ Client                              CA
   │                                  │
   │──── POST PKIOperation ──────────►│  PKCSReq  (CMS EnvelopedData → SignedData → CSR)
   │                                  │
-  │◄─── CertRep ────────────────────│  pkiStatus: SUCCESS / PENDING / FAILURE
+  │◄─── CertRep ─────────────────────│  pkiStatus: SUCCESS / PENDING / FAILURE
   │                                  │
   │  [decrypt → extract certificate] │
 ```
