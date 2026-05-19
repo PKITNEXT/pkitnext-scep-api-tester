@@ -99,6 +99,10 @@ Go to [**Releases**](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releas
    ```
 3. Enter your SCEP URL and click **Test**
 
+### Screenshot
+
+![PKITNEXT SCEP API Tester – successful test run](screenshots/Screenshot__Tester1.jpg)
+
 ### What the tester checks
 
 Runs the full SCEP enrollment cycle and shows the result live in the UI:
