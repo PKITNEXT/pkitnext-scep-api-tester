@@ -235,7 +235,7 @@ Load config.yaml
            │                                                          │
            ▼                                                          │
     Write cert.pem + key.pem                                          │
-    (+ import to Windows Cert Store if cert_store is configured)     │
+    (+ import to Windows Cert Store if cert_store is configured)      │
            │                                                          │
            └──────────────────────────────────────────────────────────┘
 ```
