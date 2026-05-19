@@ -15,7 +15,7 @@
 | [**SCEP API Tester**](#scep-api-tester) | GUI diagnostic tool — test a SCEP server in one click | Windows, macOS |
 | [**Windows Certificate Agent**](#windows-certificate-agent) | Automated enrollment & renewal as a Windows service | Windows |
 
-Both tools are built in Rust on top of a shared `scep-core` library that implements RFC 8894.
+Both tools are built in a library that implements RFC 8894.
 
 ---
 
