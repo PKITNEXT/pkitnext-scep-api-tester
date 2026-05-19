@@ -75,6 +75,9 @@ key_output:  C:\ProgramData\PKITNEXT\key.pem
 2. Run as **Administrator**:
 
 ```powershell
+# Get the help
+windows-scep-client.exe --help
+
 # Enroll certificate (one-time test)
 windows-scep-client.exe --config windows-scep-client.yaml enroll
 
