@@ -19,6 +19,20 @@ Both tools are built in a library that implements RFC 8894.
 
 ---
 
+## Why PKITNEXT?
+
+| Problem | Existing Tools | PKITNEXT |
+|---|---|---|
+| **SCEP server debugging** | Difficult — raw logs, Wireshark, trial and error | One click — full trace with step-by-step SCEP debug log |
+| **Certificate renewal** | Manual — someone has to remember and act | Automated — Windows service renews before expiry, zero downtime |
+| **Mitel phone support** | Broken — standard tools send wrong CSR attribute order | Built-in Mitel Phone Mode with correct BER-ordered attributes |
+| **Cross-platform testing** | Limited — most tools Windows-only | Windows x64 + macOS (Apple Silicon and Intel) |
+| **Deployment** | Complex — dependencies, runtimes, installers | Portable single executable — download and run |
+| **Private key safety** | Often unclear | Private key generated locally, never transmitted, never logged |
+| **Audit trail** | None | Verbose debug log exportable to file |
+
+---
+
 ## Architecture
 
 ```
