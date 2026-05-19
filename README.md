@@ -288,6 +288,85 @@ Security software requires trust. Here is what these tools do — and what they 
 
 ---
 
+## Roadmap
+
+### ✅ Phase 1 — Windows & macOS Tools (released)
+
+| Tool | Description |
+|---|---|
+| SCEP API Tester | GUI diagnostic tool for Windows and macOS |
+| Windows Certificate Agent | CLI + Windows Service — MSI installer + portable ZIP |
+
+---
+
+### 🔄 Phase 2 — Linux Certificate Agent (next release)
+
+Automated certificate lifecycle management for Linux servers — packaged as RPM, deployed via systemd.
+
+**Apache Agent** (`pkitnext-agent`)
+
+- Scans Apache config directories (`/etc/apache2`, `/etc/httpd`) for SSL virtual hosts
+- Reads `SSLCertificateFile`, `SSLCertificateKeyFile`, `SSLCertificateChainFile` directives
+- Enrolls via SCEP, writes PEM files, runs `apachectl configtest`, then `systemctl reload`
+- Rolls back to backup on any error — service stays up
+- Optional AES-256-encrypted private key with auto-managed passphrase file
+- systemd service + timer for fully unattended renewal
+
+**Tomcat Agent** (`pkitnext-tomcat-agent`)
+
+- Scans `server.xml` for SSL keystore references
+- Builds a PKCS#12 keystore from issued certificate + private key + CA chain
+- Writes keystore atomically, then `systemctl restart tomcat`
+- Same backup/rollback safety as Apache agent
+- systemd service + timer included
+
+**UC Certificate Installer** — specialized for Unify OpenScape UC Application V11
+
+- Fully automated 10-phase installation with rollback support
+- Handles all UC-specific certificate integration steps
+
+**Config (YAML):**
+```yaml
+scep:
+  url: https://ca.example.com/scep/api/your-profile/
+  challenge_password: secret
+
+subject:
+  common_name: web01.example.com
+  san: [web01.example.com]
+
+certificate:
+  cert_path: /etc/pkitnext/certs/server.crt
+  key_path:  /etc/pkitnext/certs/server.key
+  backup_directory: /etc/pkitnext/backup
+
+renewal:
+  renew_before_days: 30
+```
+
+---
+
+### 📋 Phase 3 — Broader Linux Support
+
+| Feature | Description |
+|---|---|
+| DEB / APT packaging | Ubuntu and Debian support alongside RPM |
+| Nginx Agent | SSL cert management for Nginx virtual hosts |
+| HAProxy Agent | Certificate updates for HAProxy `bind` directives |
+
+---
+
+### 📋 Phase 4 — Enterprise & Cloud
+
+| Feature | Description |
+|---|---|
+| macOS Certificate Agent | LaunchDaemon-based service for macOS servers |
+| Multi-CA failover | Multiple SCEP endpoints with automatic failover |
+| Ansible role | Deploy and configure the Linux agent via Ansible |
+| EST protocol (RFC 7030) | Modern alternative to SCEP for EST-capable CAs |
+
+---
+
 ## About PKITNEXT LABS
 
 PKITNEXT LABS develops PKI and certificate lifecycle management solutions.
