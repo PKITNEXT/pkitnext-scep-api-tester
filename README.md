@@ -25,10 +25,10 @@ Both tools are built in Rust on top of a shared `scep-core` library that impleme
 ┌─────────────────────────────────────────────────────────────┐
 │                      Windows / macOS                        │
 │                                                             │
-│   ┌─────────────────────┐   ┌─────────────────────────┐    │
-│   │   SCEP API Tester   │   │  Windows Cert Agent     │    │
-│   │   (GUI · eframe)    │   │  (CLI + Windows Service)│    │
-│   └──────────┬──────────┘   └───────────┬─────────────┘    │
+│   ┌─────────────────────┐   ┌─────────────────────────┐     │
+│   │   SCEP API Tester   │   │  Windows Cert Agent     │     │
+│   │   (GUI · eframe)    │   │  (CLI + Windows Service)│     │
+│   └──────────┬──────────┘   └───────────┬─────────────┘     │
 │              │                          │                   │
 │              └──────────┬───────────────┘                   │
 │                         │                                   │
