@@ -320,7 +320,7 @@ Automated certificate lifecycle management for Linux servers — packaged as RPM
 - Same backup/rollback safety as Apache agent
 - systemd service + timer included
 
-**UC Certificate Installer** — specialized for Unify OpenScape UC Application V11
+**UC Certificate Installer** — specialized for Mitel (former Unify) OpenScape UC Application V10/V11
 
 - Fully automated 10-phase installation with rollback support
 - Handles all UC-specific certificate integration steps
