@@ -36,18 +36,18 @@ Both tools are built on a shared library that implements RFC 8894.
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Windows / macOS                          │
-│                                                             │
+┌───────────────────────────────────────────────────────────┐
+│                      Windows / macOS                      │
+│                                                           │
 │   ┌─────────────────────┐   ┌─────────────────────────┐   │
 │   │   SCEP API Tester   │   │  Windows Cert Agent     │   │
-│   │   (GUI · eframe)    │   │  (CLI + Windows Service) │   │
+│   │   (GUI · eframe)    │   │ (CLI + Windows Service) │   │
 │   └──────────┬──────────┘   └───────────┬─────────────┘   │
 │              └──────────┬───────────────┘                 │
 │              ┌──────────▼──────────┐                      │
-│              │      scep-core       │                      │
-│              │  (Rust library)      │                      │
-│              │  RFC 8894 / CMS      │                      │
+│              │      scep-core      │                      │
+│              │  (Rust library)     │                      │
+│              │  RFC 8894 / CMS     │                      │
 │              └──────────┬──────────┘                      │
 └─────────────────────────┼─────────────────────────────────┘
                           │  HTTPS  (RFC 8894)
