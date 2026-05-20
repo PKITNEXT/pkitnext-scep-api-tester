@@ -52,9 +52,9 @@ Both tools are built on a shared library that implements RFC 8894.
 └─────────────────────────┼─────────────────────────────────┘
                           │  HTTPS  (RFC 8894)
           ┌───────────────▼──────────────────┐
-          │     SCEP Certificate Authority    │
+          │     SCEP Certificate Authority   │
           │  PKITNEXT  │  MS NDES  │  EJBCA  │
-          │  OpenXPKI  │  any RFC 8894 CA     │
+          │  OpenXPKI  │  any RFC 8894 CA    │
           └──────────────────────────────────┘
 ```
 
