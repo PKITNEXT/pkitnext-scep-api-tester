@@ -1,52 +1,136 @@
-# PKITNEXT LABS – SCEP Tools for Windows & macOS
+# Free SCEP & Microsoft NDES Diagnostic Tools by PKITNEXT LABS
 
-> Modern SCEP enrollment testing and certificate lifecycle automation toolkit for enterprise environments.
+Free diagnostic and testing utilities by **PKITNEXT LABS** for **SCEP tester** workflows, **Microsoft NDES tester** scenarios, **AD CS certificate enrollment**, **Mitel SCEP**, **VoIP certificate automation**, **SIP/TLS certificates**, and **enterprise PKI** troubleshooting.
 
-[![Latest Release](https://img.shields.io/github/v/release/PKITNEXT/pkitnext-scep-api-tester?label=latest%20release&color=0052a0)](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-blue)](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
-[![Built with Rust](https://img.shields.io/badge/built%20with-Rust-orange)](https://www.rust-lang.org/)
+These tools help administrators and security teams validate SCEP/NDES enrollment behavior, troubleshoot certificate provisioning failures, and verify processes around **X.509 certificate renewal**, **PKI automation**, and **certificate lifecycle management** across Windows, Linux, VoIP, Mitel, and hybrid enterprise environments.
 
----
+> This repository provides free diagnostic utilities by PKITNEXT LABS. It is not positioned as a full enterprise certificate management platform.
 
-## What's in this repo?
+## What You Get Here (Quick Answer)
+
+This repository is primarily used as a public entry point for:
+
+- **SCEP API Tester** (Windows/macOS) for SCEP and Microsoft NDES diagnostics
+- **Windows Certificate Agent** for automated enrollment and renewal on Windows
+- A clear bridge to **PKITNEXT SOLUTION** for enterprise certificate lifecycle automation
+
+If you are evaluating PKITNEXT, start with:
+
+1. [Release Downloads](#release-downloads)
+2. [Screenshots](#screenshots)
+3. [From Diagnostic Tool to Enterprise Automation](#from-diagnostic-tool-to-enterprise-automation)
+
+## Repository Scope Note
+
+This repository currently also contains additional Linux-oriented components (Linux SCEP Agent, Tomcat workflows, UC certificate installer, packaging assets).
+They are included for operational completeness, but they are not the primary entry point for first-time visitors evaluating the public SCEP diagnostic tooling.
+
+## From Diagnostic Tool to Enterprise Automation
+
+The free tools in this repository are designed for **testing, troubleshooting, and technical validation**.
+
+When individual diagnostics need to become a centralized, auditable, enterprise process, **PKITNEXT SOLUTION** is the next step: an on-premises platform for automated **X.509 certificate lifecycle management** for VoIP, IoT, Windows, Linux, and internal services.
+
+PKITNEXT SOLUTION supports, among others:
+
+- Automated enrollment and renewal
+- Reduced manual certificate ticket workload
+- Auditability and traceable operations
+- On-premises operation in regulated environments
+- Enterprise-scale rollout across many systems and sites
+- Support for telecom/VoIP and industrial environments
+
+## Need Help With SCEP, NDES or Certificate Renewal?
+
+If your SCEP or NDES test fails, or if certificate renewal is still handled manually, PKITNEXT can help you move from troubleshooting to automated certificate lifecycle management.
+
+- Send us your redacted debug log for an initial assessment: [Contact PKITNEXT](https://www.pkitnext.de/anfrage/)
+- Book a PKITNEXT SCEP/NDES Health Check: [Submit request](https://www.pkitnext.de/anfrage/)
+- Request an enterprise automation demo: [Visit PKITNEXT](https://www.pkitnext.de/)
+
+## Who Should Use This?
+
+- Microsoft AD CS / NDES administrators
+- VoIP and telecom teams using SIP/TLS certificates
+- Mitel phone and PBX environments
+- PKI and security teams
+- Industrial, IoT, and internal service environments
+- MSPs and system integrators
+
+## Typical Use Cases
+
+- Test Microsoft NDES / SCEP endpoints
+- Validate GetCACaps, GetCACert, PKCSReq, and CertRep flows
+- Troubleshoot failed certificate enrollment
+- Test Mitel-specific SCEP behavior
+- Validate SAN and certificate profile settings
+- Prepare enterprise rollout of automated certificate renewal
+- Collect redacted debug logs for support or pre-sales analysis
+
+## Free Tools vs. PKITNEXT SOLUTION
+
+**Free diagnostic tools (this repository):**
+
+- Local testing
+- Diagnostics and protocol analysis
+- Single-system validation
+- Manual troubleshooting
+
+**PKITNEXT SOLUTION (enterprise platform):**
+
+- Centralized certificate lifecycle management
+- Enterprise rollout and governance
+- End-to-end automation
+- Policy-based enrollment
+- Audit and reporting
+- Professional support and rollout guidance
+
+## Trust & Security Notes
+
+- No telemetry is collected by the diagnostic workflow.
+- The diagnostic tools are designed to run locally and do not require cloud connectivity for normal diagnostic workflows.
+- Private keys are generated locally and are not intentionally transmitted by the tools.
+- Offline-capable operation is possible where applicable
+- Review debug logs before sharing
+- Redact sensitive values such as OTP/challenge passwords before sharing
+
+## What's In This Repository?
 
 | Tool | Purpose | Platforms |
-|---|---|---|
-| [**SCEP API Tester**](#scep-api-tester) | GUI diagnostic tool — test a SCEP server in one click | Windows, macOS |
-| [**Windows Certificate Agent**](#windows-certificate-agent) | Automated enrollment & renewal as a Windows service | Windows |
+| --- | --- | --- |
+| **SCEP API Tester** | GUI diagnostic workflow for end-to-end SCEP server tests | Windows, macOS |
+| **Windows Certificate Agent** | Automated enrollment and renewal as a Windows service | Windows |
+| **Linux SCEP Agent (when included)** | Automated enrollment, lifecycle checks, and renewal workflows for Linux services | Linux |
+| **Tomcat Agent (when included)** | PKCS#12-oriented enrollment and renewal flow for Tomcat | Linux |
 
-Both tools are built on a shared library that implements RFC 8894.
+Additional PKITNEXT agent components may be documented here when they are included in this repository or released as companion tools.
 
----
+The tooling is aligned around RFC 8894 SCEP interoperability and enterprise PKI troubleshooting.
 
 ## Why PKITNEXT?
 
-| Problem | Existing Tools | PKITNEXT |
-|---|---|---|
-| **SCEP server debugging** | Difficult — raw logs, Wireshark, trial and error | One click — full trace with step-by-step SCEP debug log |
-| **Certificate renewal** | Manual — someone has to remember and act | Automated — Windows service renews before expiry, zero downtime |
-| **Mitel phone support** | Broken — standard tools send wrong CSR attribute order | Built-in Mitel Phone Mode with correct BER-ordered attributes |
-| **Cross-platform testing** | Limited — most tools Windows-only | Windows x64 + macOS (Apple Silicon and Intel) |
-| **Deployment** | Complex — dependencies, runtimes, installers | Portable single executable — download and run |
-| **Private key safety** | Often unclear | Private key generated locally, never transmitted, never logged |
-| **Audit trail** | None | Verbose debug log exportable to file |
+| Operational Problem | Typical Legacy Approach | PKITNEXT LABS Diagnostic Approach |
+| --- | --- | --- |
+| SCEP server debugging | Raw traces, packet capture, trial and error | Structured, step-based diagnostics with protocol visibility |
+| Enrollment failures | Manual reproduction with inconsistent inputs | Repeatable test runs with explicit request parameters |
+| NDES complexity | Manual OTP handling and opaque errors | NDES-aware diagnostics and log-first troubleshooting |
+| Mitel interoperability | Generic tooling often mismatches CSR behavior | Mitel-focused test paths and validation options |
+| Audit readiness | Low traceability of troubleshooting actions | Exportable debug output and reproducible test evidence |
 
----
+## Cross-Platform Architecture (ASCII)
 
-## Architecture
-
-```
+```text
 ┌───────────────────────────────────────────────────────────┐
-│                      Windows / macOS                      │
+│                      Windows / macOS / Linux              │
 │                                                           │
 │   ┌─────────────────────┐   ┌─────────────────────────┐   │
-│   │   SCEP API Tester   │   │  Windows Cert Agent     │   │
-│   │   (GUI · eframe)    │   │ (CLI + Windows Service) │   │
+│   │   SCEP API Tester   │   │  Certificate Agents     │   │
+│   │   (GUI)             │   │ (Windows / Linux)       │   │
 │   └──────────┬──────────┘   └───────────┬─────────────┘   │
 │              └──────────┬───────────────┘                 │
 │              ┌──────────▼──────────┐                      │
 │              │      scep-core      │                      │
-│              │  (Rust library)     │                      │
+│              │  Protocol handling  │                      │
 │              │  RFC 8894 / CMS     │                      │
 │              └──────────┬──────────┘                      │
 └─────────────────────────┼─────────────────────────────────┘
@@ -54,314 +138,105 @@ Both tools are built on a shared library that implements RFC 8894.
           ┌───────────────▼──────────────────┐
           │     SCEP Certificate Authority   │
           │  PKITNEXT  │  MS NDES  │  EJBCA  │
-          │  OpenXPKI  │  any RFC 8894 CA    │
+          │  OpenXPKI  │  other RFC 8894 CAs │
           └──────────────────────────────────┘
 ```
 
-### SCEP Protocol Flow
+## SCEP Protocol Flow (ASCII)
 
-```
+```text
 Client                              CA
   │                                  │
-  │──── GET  GetCACaps ─────────────►│  Capabilities (SHA-256, AES, …)
+  │──── GET  GetCACaps ─────────────►│  Capabilities (SHA-256, AES, ...)
   │                                  │
   │──── GET  GetCACert ─────────────►│  CA certificate chain (DER / PKCS#7)
   │                                  │
   │  [generate RSA key pair + CSR]   │
   │                                  │
-  │──── POST PKIOperation ──────────►│  PKCSReq (CMS EnvelopedData → SignedData → CSR)
+  │──── POST PKIOperation ──────────►│  PKCSReq (CMS EnvelopedData -> SignedData -> CSR)
   │                                  │
   │◄─── CertRep ─────────────────────│  pkiStatus: SUCCESS / PENDING / FAILURE
   │                                  │
-  │  [decrypt → extract certificate] │
+  │  [decrypt -> extract certificate]│
 ```
 
----
+## Screenshots
 
-## SCEP API Tester
+![PKITNEXT SCEP API Tester - successful test run](screenshots/Screenshot__Tester1.jpg)
 
-A graphical desktop tool to run a full SCEP enrollment test against any SCEP server endpoint.
-No installation required. Download, double-click, test.
+![PKITNEXT SCEP API Tester - NDES mode with automatic OTP fetch](screenshots/Screenshot__Tester_NDES.jpg)
 
-### Download
+The NDES view demonstrates automated challenge retrieval for Microsoft AD CS / NDES diagnostics.
 
-Go to [**Releases**](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest) and download:
+## Release Downloads
 
-| Platform | File |
-|---|---|
+[![Latest Release](https://img.shields.io/github/v/release/PKITNEXT/pkitnext-scep-api-tester?label=latest%20release&color=0052a0)](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-blue)](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
+
+Download all current binaries from:
+
+- [PKITNEXT SCEP Tools - Latest Release](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
+
+### SCEP API Tester Downloads
+
+| Platform | Artifact |
+| --- | --- |
 | Windows x64 | `scep-tester.exe` |
-| macOS Apple Silicon (M1/M2/M3) | `scep-tester-macos-arm64.zip` |
+| macOS Apple Silicon (arm64) | `scep-tester-macos-arm64.zip` |
 | macOS Intel (x86_64) | `scep-tester-macos-intel.zip` |
 
-### Install in under 5 minutes
-
-**Windows:**
-1. Download `scep-tester.exe`
-2. Double-click — no installer, no runtime required
-3. Enter your SCEP URL and click **Test**
-
-**macOS:**
-1. Download and unzip the archive for your chip (Apple Silicon or Intel)
-2. The app is **ad-hoc signed** but not notarized by Apple. On first launch macOS Gatekeeper will show a warning.
+### Windows Certificate Agent Downloads
 
-   **Option A — via Finder:** Right-click `scep-tester.app` → **Open** → confirm **Open** in the dialog.
+| Artifact | Description |
+| --- | --- |
+| `windows-scep-client-*.msi` | MSI installer (recommended) |
+| `windows-scep-client-*-x64.zip` | Portable ZIP package |
 
-   **Option B — via Terminal:**
-   ```bash
-   xattr -d com.apple.quarantine scep-tester.app
-   open scep-tester.app
-   ```
-3. After the first approval the app starts normally every time.
+## Additional Linux Components (In This Repository)
 
-### Screenshots
+The sections below summarize Linux and server-side workflows for teams that need more than the Windows/macOS diagnostic entry point.
 
-![PKITNEXT SCEP API Tester – successful test run](screenshots/Screenshot__Tester1.jpg)
+## PKITNEXT Linux Agent (Summary)
 
-![PKITNEXT SCEP API Tester – NDES mode with auto OTP fetch](screenshots/Screenshot__Tester_NDES.jpg)
+- Automated RFC 8894 SCEP enrollment and renewal workflows for Linux services
+- Includes Apache-oriented lifecycle orchestration and systemd timer operation
+- Configuration templates: [examples/pkitnext-agent.yaml](examples/pkitnext-agent.yaml)
+- systemd units: [deploy/systemd/pkitnext-agent.service](deploy/systemd/pkitnext-agent.service), [deploy/systemd/pkitnext-agent.timer](deploy/systemd/pkitnext-agent.timer)
 
-**NDES Mode** enables automatic enrollment against Microsoft AD CS / NDES (`mscep.dll`) endpoints.
-Enable it by checking *NDES Mode*, enter the Windows account credentials for `mscep_admin`,
-and click **Test** — the tester fetches the one-time challenge password automatically,
-builds and encrypts the PKCSReq, and decrypts the issued certificate from the CertRep response.
-No manual OTP copy-paste required.
-If the OTP fetch fails, the tester falls back to the manually entered challenge password (configurable).
+## Tomcat Agent (Summary)
 
-### What the tester checks
+- PKCS#12-oriented enrollment and renewal flow for Tomcat environments
+- Template: [examples/pkitnext-tomcat-agent.yaml](examples/pkitnext-tomcat-agent.yaml)
+- systemd units: [deploy/systemd/pkitnext-tomcat-agent.service](deploy/systemd/pkitnext-tomcat-agent.service), [deploy/systemd/pkitnext-tomcat-agent.timer](deploy/systemd/pkitnext-tomcat-agent.timer)
 
-Runs the full SCEP enrollment cycle and shows the result live in the UI:
+## UC Certificate Installer (Summary)
 
-| Step | Operation | What you see |
-|---|---|---|
-| 1 | `GetCACaps` | Server capabilities (algorithms, POST support, …) |
-| 2 | `GetCACert` | CA certificate chain with subject and validity |
-| 3 | `PKCSReq` | RSA key pair + CSR generated on the fly, sent to CA |
-| 4 | `CertRep` | Issued certificate: subject, SANs, validity, PEM |
+- Includes UC automation utility for Mitel / Unify OpenScape UC workflows
+- Usage documentation: [scripts/README.md](scripts/README.md)
 
-### Features
+## RPM Packaging (Summary)
 
-**Connectivity & authentication**
-- Any SCEP server — PKITNEXT, Microsoft NDES / AD CS, EJBCA, OpenXPKI
-- **NDES Mode** — auto-fetch one-time challenge password from `mscep_admin` using Windows credentials; automatic fallback to manual challenge on fetch failure
-- Manual challenge password
-- TLS certificate verification bypass (dev / lab mode)
+- RPM packaging and build workflow are included for enterprise Linux rollout scenarios
+- Build references: [INSTALL.md](INSTALL.md)
 
-**Certificate request configuration** *(expandable panel, all fields pre-filled with defaults)*
-- DNS SAN — editable (default: built-in test name)
-- IP SAN — IPv4 and IPv6
-- Email SAN — rfc822Name in SubjectAltName extension
-- Subject O — Organization
-- Subject OU — Organizational Unit
-- Subject emailAddress — email in the subject DN
-- SAN extension Critical flag
+## Extended Documentation
 
-**Crypto profiles — selected automatically from `GetCACaps`**
-- Modern: SHA-256 + AES-128-CBC
-- Legacy MSCEP: SHA-1 + 3DES-CBC
-- Key transport: RSA PKCS#1 v1.5 and **RSAES-OAEP** (required by some NDES configurations)
+- Planned deep-dive docs:
+  - `docs/linux-agent.md` (TODO)
+  - `docs/tomcat-agent.md` (TODO)
+  - `docs/uc-certificate-installer.md` (TODO)
+  - `docs/rpm-packaging.md` (TODO)
 
-**Results & export**
-- Issued certificate details: subject, issuer, serial, validity, SANs
-- Save end-entity certificate as PEM file
-- Save CA / RA certificate chain as PEM file
-- **Copy to clipboard** button on every panel
-- **Show / Hide** toggle on every panel to manage screen space
-- If certificate extraction fails: **Show hex raw** — displays the raw CertRep response in hex for protocol-level debugging
+## License / Usage Notice
 
-**Debug log**
-- Verbose step-by-step protocol trace (enable *Debug mode*)
-- Shows every HTTP request/response, crypto parameters, parsed fields
-- NDES OTP value is always redacted — safe to share with support
-- Save log to file for support tickets
+- These tools are provided as free diagnostic utilities by PKITNEXT LABS.
+- This repository is not positioned as an open-source project unless a separate open-source license is added.
+- Enterprise support, rollout planning and automated certificate lifecycle management are available through PKITNEXT.
 
-**Mitel Phone Mode** — BER-ordered CSR attributes for Mitel SIP phones
+## Support & Commercial Note
 
-**CA Compatibility**
+These tools are provided by **PKITNEXT LABS** as free diagnostic utilities.
+For enterprise support, rollout planning, or automated certificate lifecycle management, contact **PKITNEXT**:
 
-| CA | Status |
-|---|---|
-| PKITNEXT | ✅ Full support |
-| Microsoft NDES / AD CS | ✅ Full support incl. RSAES-OAEP, auto OTP fetch |
-| EJBCA | ✅ Standard RFC 8894 |
-| OpenXPKI | ✅ Standard RFC 8894 |
-| Mitel PBX | ✅ Mitel Phone Mode |
-
----
-
-## Windows Certificate Agent
-
-A command-line tool and Windows service for automated certificate enrollment and renewal via SCEP.
-Set it up once, and it keeps your certificate valid forever.
-
-### Download
-
-Go to [**Releases**](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest) and download:
-
-| File | Description |
-|---|---|
-| `windows-scep-client-*.msi` | MSI installer (recommended) — installs to `C:\Program Files\PKITNEXT\SCEP Agent\` |
-| `windows-scep-client-*-x64.zip` | Portable ZIP — EXE + example config |
-
-**Requirements:** Windows 10 / Server 2016 or newer (x64) · Administrator rights for service installation
-
-### Install in under 5 minutes
-
-```powershell
-# 1. Generate a ready-to-use config file
-windows-scep-client.exe --create-conf
-
-# 2. Edit the config (Notepad or any editor)
-notepad windows-scep-client.yaml
-
-# 3. Test a one-time enrollment
-windows-scep-client.exe --config windows-scep-client.yaml enroll
-
-# 4. Install as auto-start Windows service (run PowerShell as Administrator)
-windows-scep-client.exe --config C:\ProgramData\pkitnext\client.yaml install-service
-windows-scep-client.exe start-service
-```
-
-Done. The agent checks the certificate every 24 hours and renews automatically 30 days before expiry.
-
-### Configuration file
-
-Generated by `--create-conf`. All options explained:
-
-```yaml
-# SCEP server URL
-scep_url: "https://ca.example.com/scep/api/your-profile/"
-
-# Certificate subject
-common_name: "myhost.example.com"
-
-# Subject Alternative Names (optional)
-san_dns: "myhost.example.com"
-# san_ip: "192.168.1.1"
-
-# Output paths (PEM format)
-cert_output: "C:/ProgramData/pkitnext/cert.pem"
-key_output:  "C:/ProgramData/pkitnext/key.pem"
-
-# SCEP challenge password
-challenge_password: "your-challenge-secret"
-
-# Renewal threshold: renew this many days before expiry (default: 30)
-days_before_expiry: 30
-
-# Service check interval in hours (default: 24)
-check_interval_hours: 24
-
-# Windows Certificate Store — also import into certstore (optional)
-# cert_store: "LocalMachine\\MY"
-
-# Log file for service mode (optional)
-# log_file: "C:/ProgramData/pkitnext/windows-scep-client.log"
-```
-
-### All commands
-
-```powershell
-# Enrollment & renewal
-windows-scep-client.exe --config client.yaml enroll               # Request a new certificate
-windows-scep-client.exe --config client.yaml renew                # Renew if near expiry
-windows-scep-client.exe --config client.yaml renew --force-renew  # Renew immediately
-
-# Certificate status
-windows-scep-client.exe --config client.yaml status               # Subject, expiry, path
-
-# Windows Certificate Store test
-windows-scep-client.exe --config client.yaml test-certstore       # Import → verify → remove
-
-# Windows Service (requires Administrator)
-windows-scep-client.exe --config client.yaml install-service
-windows-scep-client.exe start-service
-windows-scep-client.exe stop-service
-windows-scep-client.exe uninstall-service
-
-# Config helper
-windows-scep-client.exe --create-conf   # Write default config to disk
-windows-scep-client.exe --help          # Full help text
-```
-
----
-
-## Security Design
-
-Security software requires trust. Here is what these tools do — and what they deliberately do not do:
-
-| Property | Detail |
-|---|---|
-| **No telemetry** | No data is sent anywhere except to your configured SCEP server |
-| **No cloud dependency** | Fully offline-capable — no license server, no update check, no analytics |
-| **Local key generation** | RSA key pairs are generated on the machine, never transmitted |
-| **Private key never leaves the machine** | Only the CSR (public key + subject) is sent to the CA |
-| **TLS validation** | TLS certificate verification is enabled by default; bypass is opt-in (lab/dev only) |
-| **RFC 8894 compliant** | Standard SCEP protocol — no proprietary extensions required |
-| **Memory-safe implementation** | Written in Rust — no buffer overflows, no use-after-free, no null pointer dereferences |
-
----
-
-## CA Compatibility
-
-| CA | SCEP API Tester | Windows Cert Agent |
-|---|---|---|
-| **PKITNEXT** | ✅ Full support | ✅ Full support |
-| **Microsoft NDES / AD CS** | ✅ Full support incl. RSAES-OAEP, auto OTP fetch | ✅ Standard RFC 8894 |
-| **EJBCA** | ✅ Standard RFC 8894 | ✅ Standard RFC 8894 |
-| **OpenXPKI** | ✅ Standard RFC 8894 | ✅ Standard RFC 8894 |
-| **Mitel PBX** | ✅ Mitel Phone Mode | — |
-
----
-
-## Roadmap
-
-### ✅ Phase 1 — Windows & macOS Tools (released)
-
-| Tool | Description |
-|---|---|
-| SCEP API Tester | GUI diagnostic tool for Windows and macOS |
-| Windows Certificate Agent | CLI + Windows Service — MSI installer + portable ZIP |
-
----
-
-### 🔄 Phase 2 — Linux Certificate Agent (next release)
-
-Automated certificate lifecycle management for Linux servers — packaged as RPM, deployed via systemd.
-
-**Apache Agent** (`pkitnext-agent`) — Scans Apache config directories, enrolls via SCEP, writes PEM files, runs `apachectl configtest`, then `systemctl reload`. Rolls back to backup on any error.
-
-**Tomcat Agent** (`pkitnext-tomcat-agent`) — Scans `server.xml` for SSL keystore references, builds PKCS#12 keystore, writes atomically, then `systemctl restart tomcat`.
-
-**UC Certificate Installer** — Specialized for Mitel (former Unify) OpenScape UC Application V10/V11.
-
----
-
-### 📋 Phase 3 — Broader Linux Support
-
-| Feature | Description |
-|---|---|
-| DEB / APT packaging | Ubuntu and Debian support alongside RPM |
-| Nginx Agent | SSL cert management for Nginx virtual hosts |
-| HAProxy Agent | Certificate updates for HAProxy `bind` directives |
-
----
-
-### 📋 Phase 4 — Enterprise & Cloud
-
-| Feature | Description |
-|---|---|
-| macOS Certificate Agent | LaunchDaemon-based service for macOS servers |
-| Multi-CA failover | Multiple SCEP endpoints with automatic failover |
-| Ansible role | Deploy and configure the Linux agent via Ansible |
-| EST protocol (RFC 7030) | Modern alternative to SCEP for EST-capable CAs |
-
----
-
-## About PKITNEXT LABS
-
-PKITNEXT LABS develops PKI and certificate lifecycle management solutions.
-
-🌐 [pkitnext.de](https://www.pkitnext.de)
-
----
-
-© 2026 PKITNEXT LABS · All rights reserved
+- Contact form: [https://www.pkitnext.de/anfrage/](https://www.pkitnext.de/anfrage/)
+- Website: [https://www.pkitnext.de/](https://www.pkitnext.de/)
