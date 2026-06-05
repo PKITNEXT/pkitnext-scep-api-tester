@@ -1,0 +1,44 @@
+agent:
+  instance_name: web01
+  log_level: INFO
+  log_path: /var/log/pkitnext-agent.log
+  state_path: /var/lib/pkitnext-agent/state.json
+
+apache:
+  service_name: apache2
+  configtest_command: apachectl configtest
+  reload_command: systemctl reload apache2
+  scan_directories:
+    - /etc/apache2
+    - /etc/httpd
+
+certificate:
+  cert_path: /etc/pkitnext/certs/server.crt
+  key_path: /etc/pkitnext/certs/server.key
+  chain_path: /etc/pkitnext/certs/chain.crt
+  backup_directory: /etc/pkitnext/backup
+  # key_passphrase_file: /etc/pkitnext/certs/key.passphrase
+  # Modus b: Passphrase-Datei fuer verschluesselten Private Key.
+  # Existiert die Datei noch nicht, erzeugt der Agent beim ersten Lauf eine
+  # zufaellige Passphrase und speichert sie mit Berechtigung 0600 in dieser Datei.
+  # Bei allen weiteren Laeufen wird die gespeicherte Passphrase verwendet.
+  # Modus a: Passphrase alternativ einmalig per --key-passphrase uebergeben
+  #          (nicht gespeichert, ueberschreibt key_passphrase_file).
+
+subject:
+  common_name: web01.sceptest.pkitnext
+  san:
+    - web01.sceptest.pkitnext
+    - web01
+
+renewal:
+  renew_before_days: 30
+  key_size: 4096
+
+scep:
+  # Full URL to the SCEP endpoint including the config_name slug.
+  # Pattern: https://<host>/scep/api/<config_name>/
+  url: https://pkitnext.sceptest.pkitnext/scep/api/default/
+  challenge_password: geheim
+  timeout_seconds: 30
+  verify_tls: true

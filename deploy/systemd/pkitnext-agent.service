@@ -1,0 +1,13 @@
+[Unit]
+Description=PKITNEXT Linux SCEP Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/bin/pkitnext-agent renew --config /etc/pkitnext-agent/agent.yaml
+
+[Install]
+WantedBy=multi-user.target

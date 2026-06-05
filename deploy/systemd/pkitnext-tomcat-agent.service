@@ -1,0 +1,13 @@
+[Unit]
+Description=PKITNEXT Linux SCEP Agent (Tomcat)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/bin/pkitnext-tomcat-agent renew --config /etc/pkitnext-agent/tomcat-agent.yaml
+
+[Install]
+WantedBy=multi-user.target

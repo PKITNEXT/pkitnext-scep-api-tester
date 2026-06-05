@@ -1,0 +1,66 @@
+# PKITNEXT Tomcat SCEP Agent – Beispielkonfiguration
+#
+# Kopieren nach /etc/pkitnext-tomcat-agent.yaml und anpassen.
+# Berechtigungen: chmod 600 /etc/pkitnext-tomcat-agent.yaml
+#
+# Tomcat server.xml muss auf keystore_path verweisen:
+#
+#   <!-- Classic Connector (Tomcat 8/9) -->
+#   <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+#              SSLEnabled="true"
+#              keystoreFile="/etc/tomcat9/ssl/keystore.p12"
+#              keystorePass="changeit"
+#              keystoreType="PKCS12" />
+#
+#   <!-- SSLHostConfig (Tomcat 9+ empfohlen) -->
+#   <SSLHostConfig>
+#     <Certificate certificateKeystoreFile="/etc/tomcat9/ssl/keystore.p12"
+#                  certificateKeystorePassword="changeit"
+#                  certificateKeystoreType="PKCS12" />
+#   </SSLHostConfig>
+
+agent:
+  instance_name: tomcat-prod
+  log_level: INFO
+  log_path: /var/log/pkitnext-tomcat-agent.log
+  state_path: /var/lib/pkitnext-agent/tomcat-state.json
+
+tomcat:
+  service_name: tomcat9
+  restart_command: systemctl restart tomcat9
+  keystore_path: /etc/tomcat9/ssl/keystore.p12
+  keystore_password: changeit
+  keystore_alias: tomcat
+  scan_directories:
+    - /etc/tomcat9
+    - /etc/tomcat10
+    - /opt/tomcat/conf
+
+certificate:
+  # PEM-Dateien (werden parallel zum Keystore geschrieben; dienen als Referenz und Backup-Basis)
+  cert_path:  /etc/tomcat9/ssl/cert.pem
+  key_path:   /etc/tomcat9/ssl/key.pem
+  chain_path: /etc/tomcat9/ssl/chain.pem
+  backup_directory: /etc/tomcat9/ssl/backup
+  # key_passphrase_file: /etc/tomcat9/ssl/key.passphrase
+  # Modus b: Passphrase-Datei fuer den verschluesselten Private Key (PEM).
+  # Erzeugt beim ersten Lauf eine zufaellige Passphrase (0600). Gilt nur fuer
+  # die PEM-Key-Datei; der PKCS#12-Keystore verwendet weiterhin keystore_password.
+  # Modus a: Passphrase alternativ einmalig per --key-passphrase uebergeben.
+
+subject:
+  common_name: tomcat.sceptest.pkitnext
+  san:
+    - tomcat.sceptest.pkitnext
+
+renewal:
+  renew_before_days: 30
+  key_size: 2048
+
+scep:
+  # Vollständige URL inkl. config_name-Slug: <basis>/scep/api/<config_name>/
+  url: https://pkitnext.sceptest.pkitnext/scep/api/default/
+  # challenge_password: geheim   # optional je nach CA-Konfiguration
+  timeout_seconds: 30
+  verify_tls: true
+  # ca_cert_path: /etc/ssl/certs/pkitnext-ca.crt  # nur für selbstsignierte CA nötig
