@@ -113,9 +113,18 @@ Go to [**Releases**](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releas
    ```
 3. After the first approval the app starts normally every time.
 
-### Screenshot
+### Screenshots
 
 ![PKITNEXT SCEP API Tester – successful test run](screenshots/Screenshot__Tester1.jpg)
+
+![PKITNEXT SCEP API Tester – NDES mode with auto OTP fetch](screenshots/Screenshot__Tester_NDES.jpg)
+
+**NDES Mode** enables automatic enrollment against Microsoft AD CS / NDES (`mscep.dll`) endpoints.
+Enable it by checking *NDES Mode*, enter the Windows account credentials for `mscep_admin`,
+and click **Test** — the tester fetches the one-time challenge password automatically,
+builds and encrypts the PKCSReq, and decrypts the issued certificate from the CertRep response.
+No manual OTP copy-paste required.
+If the OTP fetch fails, the tester falls back to the manually entered challenge password (configurable).
 
 ### What the tester checks
 
@@ -126,15 +135,55 @@ Runs the full SCEP enrollment cycle and shows the result live in the UI:
 | 1 | `GetCACaps` | Server capabilities (algorithms, POST support, …) |
 | 2 | `GetCACert` | CA certificate chain with subject and validity |
 | 3 | `PKCSReq` | RSA key pair + CSR generated on the fly, sent to CA |
-| 4 | `CertRep` | Issued certificate: subject, SANs, validity, fingerprint |
+| 4 | `CertRep` | Issued certificate: subject, SANs, validity, PEM |
 
-**Features:**
-- Challenge password support
-- TLS verification bypass (dev / lab mode)
-- Verbose step-by-step debug log — save to file for support tickets
-- **Mitel Phone Mode** — BER-ordered CSR attributes for Mitel SIP phones
-- Save the full CA certificate chain as PEM
-- About dialog with EULA
+### Features
+
+**Connectivity & authentication**
+- Any SCEP server — PKITNEXT, Microsoft NDES / AD CS, EJBCA, OpenXPKI
+- **NDES Mode** — auto-fetch one-time challenge password from `mscep_admin` using Windows credentials; automatic fallback to manual challenge on fetch failure
+- Manual challenge password
+- TLS certificate verification bypass (dev / lab mode)
+
+**Certificate request configuration** *(expandable panel, all fields pre-filled with defaults)*
+- DNS SAN — editable (default: built-in test name)
+- IP SAN — IPv4 and IPv6
+- Email SAN — rfc822Name in SubjectAltName extension
+- Subject O — Organization
+- Subject OU — Organizational Unit
+- Subject emailAddress — email in the subject DN
+- SAN extension Critical flag
+
+**Crypto profiles — selected automatically from `GetCACaps`**
+- Modern: SHA-256 + AES-128-CBC
+- Legacy MSCEP: SHA-1 + 3DES-CBC
+- Key transport: RSA PKCS#1 v1.5 and **RSAES-OAEP** (required by some NDES configurations)
+
+**Results & export**
+- Issued certificate details: subject, issuer, serial, validity, SANs
+- Save end-entity certificate as PEM file
+- Save CA / RA certificate chain as PEM file
+- **Copy to clipboard** button on every panel
+- **Show / Hide** toggle on every panel to manage screen space
+- If certificate extraction fails: **Show hex raw** — displays the raw CertRep response in hex for protocol-level debugging
+
+**Debug log**
+- Verbose step-by-step protocol trace (enable *Debug mode*)
+- Shows every HTTP request/response, crypto parameters, parsed fields
+- NDES OTP value is always redacted — safe to share with support
+- Save log to file for support tickets
+
+**Mitel Phone Mode** — BER-ordered CSR attributes for Mitel SIP phones
+
+**CA Compatibility**
+
+| CA | Status |
+|---|---|
+| PKITNEXT | ✅ Full support |
+| Microsoft NDES / AD CS | ✅ Full support incl. RSAES-OAEP, auto OTP fetch |
+| EJBCA | ✅ Standard RFC 8894 |
+| OpenXPKI | ✅ Standard RFC 8894 |
+| Mitel PBX | ✅ Mitel Phone Mode |
 
 ---
 
@@ -253,13 +302,13 @@ Security software requires trust. Here is what these tools do — and what they 
 
 ## CA Compatibility
 
-| CA | Notes |
-|---|---|
-| **PKITNEXT** | Full support including scep_v2 server |
-| **Microsoft NDES** | Standard RFC 8894 enrollment |
-| **EJBCA** | Standard RFC 8894 enrollment |
-| **OpenXPKI** | Standard RFC 8894 enrollment |
-| **Mitel PBX** | Use Mitel Phone Mode in the SCEP API Tester |
+| CA | SCEP API Tester | Windows Cert Agent |
+|---|---|---|
+| **PKITNEXT** | ✅ Full support | ✅ Full support |
+| **Microsoft NDES / AD CS** | ✅ Full support incl. RSAES-OAEP, auto OTP fetch | ✅ Standard RFC 8894 |
+| **EJBCA** | ✅ Standard RFC 8894 | ✅ Standard RFC 8894 |
+| **OpenXPKI** | ✅ Standard RFC 8894 | ✅ Standard RFC 8894 |
+| **Mitel PBX** | ✅ Mitel Phone Mode | — |
 
 ---
 
