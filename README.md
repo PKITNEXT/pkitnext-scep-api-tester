@@ -175,9 +175,9 @@ The NDES view demonstrates automated challenge retrieval for Microsoft AD CS / N
 
 Download all current binaries from:
 
-- [PKITNEXT SCEP Tools - Latest Release](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
+- [PKITNEXT SCEP API Tester - Latest Release](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
 - [Windows SCEP Agent - Latest Release](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
-- [Linux SCEP Agent RPM - Latest Release](https://github.com/PKITNEXT/Linux-SCEP-Agent/releases/latest)
+- [Linux SCEP Agent RPM - Latest Release](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
 
 ### SCEP API Tester Downloads
 
@@ -224,7 +224,7 @@ The sections below summarize Linux and server-side workflows for teams that need
 
 - RPM packaging and build workflow are included for enterprise Linux rollout scenarios
 - Build references: [INSTALL.md](INSTALL.md)
-- Linux RPM release page: [PKITNEXT Linux SCEP Agent Releases](https://github.com/PKITNEXT/Linux-SCEP-Agent/releases/latest)
+- Linux RPM release page: [PKITNEXT Linux SCEP Agent Releases](https://github.com/PKITNEXT/pkitnext-scep-api-tester/releases/latest)
 
 ## Extended Documentation
 
